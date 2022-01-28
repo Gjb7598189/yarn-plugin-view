@@ -1,17 +1,25 @@
 name: auto-release
+
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches: [main]
+
 jobs:
-    publish-npm:
-        runs-on: ubuntu-latest
-        steps:
-            - {uses: actions/checkout@main}
-            - {uses: actions/setup-node@v1, with: {node-version: 17, registry-url: 'https://registry.npmjs.org/'}}
-            - {name: "install", run: 'npm install'}
-            - {name: "build", run: 'npm run build'}
-            - {name: 'git config', run:['git config user.name Gjb7598189', 'git config user.email 1171772585@qq.com']}
-            - {name: 'create new version and change CHANGE_LOG', run: 'npx standard-version'}
-            - {run: 'npm publish', env: {NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}}}
-            - {name: "push", run: 'git push origin main'}
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 17
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm run build
+      - run: git config user.name Gjb7598189
+      - run: git config user.email 1171772585@qq.com
+      - run: npx standard-version
+      - run: git push origin main
+      - run: npm publish
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
