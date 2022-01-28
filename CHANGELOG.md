@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2022-01-28)
+
+
+### Features
+
+* remove yarn# ([eacf83c](https://github.com/Gjb7598189/yarn-plugin-view/commit/eacf83c5a187759890e39da9ae7d3ca68f8efddb))
+
 ## 1.1.0 (2022-01-28)
 
 
