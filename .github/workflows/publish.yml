@@ -14,10 +14,13 @@ jobs:
         with:
           node-version: 17
           registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: yarn -v
+      - run: yarn run build
       - run: git config user.name Gjb7598189
       - run: git config user.email 1171772585@qq.com
       - run: npx standard-version
       - run: git push origin main
-      - run: npm publish
+      - run: yarn publish
         env:
           NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
